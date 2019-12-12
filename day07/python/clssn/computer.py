@@ -1,9 +1,11 @@
 class IntcodeComputer:
-    def __init__(self, mem, i=list(), o=list()):
+    def __init__(self, mem, i=None, o=None):
         self.m = mem
         self.pc = 0
-        self.output = o
-        self.input = i
+        # directly using the default argument like o=[] for shows weird behavior since it is
+        # initialized with an output value from a different IntcodeComputer instance.
+        self.output = o if o else []
+        self.input = o if o else []
 
     def compute(self, input=[]):
         self.input = input
